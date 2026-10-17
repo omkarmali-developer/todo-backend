@@ -1,0 +1,9 @@
+ALTER TABLE todos
+  ADD COLUMN created_for DATETIME NULL;
+
+UPDATE todos
+SET created_for = CURRENT_TIMESTAMP
+WHERE created_for IS NULL;
+
+ALTER TABLE todos
+  MODIFY COLUMN created_for DATETIME NOT NULL;
